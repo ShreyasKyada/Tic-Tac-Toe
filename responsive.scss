@@ -1,0 +1,19 @@
+@media screen and (max-width : 927px) {
+    :root {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width : 500px) {
+    :root {
+        font-size: 39px;
+    }
+    .option-btn-container {
+        flex-direction: column;
+        height: 40%;
+    }
+    .player-btn-container {
+        height: 40%;
+        margin: 0;
+    }
+}
