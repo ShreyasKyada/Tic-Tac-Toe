@@ -27,6 +27,7 @@
   width: 100vw;
   background: radial-gradient(ellipse at bottom, #232425 0%, #090A0F 100%);
   position: relative;
+  overflow: hidden;
 }
 
 .card {
