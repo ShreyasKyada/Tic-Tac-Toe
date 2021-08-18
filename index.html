@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>TIC TAC TOE</title>
 </head>
 
@@ -20,6 +20,29 @@
         <span class="s2"></span>
         <span class="s3"></span>
         <span class="s4"></span>
+        <section class="option-container">
+            <div class="option-toggle-container">
+                <div class="close-btn-container">
+                    <div class="close-btn"></div>
+                </div>
+                <div class="flex-music">
+                    <div class="music"></div>
+                    <p class="setting-name">Music</p>
+                    <div class="toggle">
+                        <div class="toggle-container first" id="first"></div>
+                        <div class="toggle-container second" id="second"></div>
+                    </div>
+                </div>
+                <div class="flex-music">
+                    <div class="sound"></div>
+                    <p class="setting-name">Sound</p>
+                    <div class="toggle">
+                        <div class="toggle-container first forth" id="forth"></div>
+                        <div class="toggle-container second fifth" id="fifth"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="card">
             <section class="btn-container">
                 <section class="player-btn-container">
@@ -53,18 +76,18 @@
                         <span></span>
                         <a href="#" id="back">Exit</a>
                     </div>
-                    <div class="small-btn btn4">
+                    <div class="small-btn btn5">
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
-                        <a href="#" id="back">Options</a>
+                        <a href="#" id="option">Options</a>
                     </div>
                 </section>
             </section>
         </section>
     </section>
-
+    <script src="js/main.js"></script>
 </body>
 
 </html>

@@ -318,7 +318,6 @@
 .btn3 a,
 .btn4 a,
 .btn5 a {
-  color: #32ff7e;
   font-size: 0.6rem;
   -webkit-transition: background-color 0.6s, color 0.6s;
   transition: background-color 0.6s, color 0.6s;
@@ -343,8 +342,6 @@
 .btn5 a::before {
   top: 0;
   left: 0;
-  border-top: 0.06rem solid #32ff7e;
-  border-left: 0.06rem solid #32ff7e;
 }
 
 .btn3 a::after,
@@ -352,8 +349,6 @@
 .btn5 a::after {
   right: 0;
   bottom: 0;
-  border-bottom: 0.06rem solid #32ff7e;
-  border-right: 0.06rem solid #32ff7e;
 }
 
 .btn3 a:hover::before,
@@ -373,4 +368,380 @@
           transition-delay: 0.3s;
   background-color: #32ff7e;
   color: #1c1c25;
+}
+
+.btn4 a {
+  color: #ff3f34;
+}
+
+.btn4 a::before {
+  border-top: 0.06rem solid #ff3f34;
+  border-left: 0.06rem solid #ff3f34;
+}
+
+.btn4 a::after {
+  border-bottom: 0.06rem solid #ff3f34;
+  border-right: 0.06rem solid #ff3f34;
+}
+
+.btn4 a:hover {
+  background-color: #ff3f34;
+}
+
+.btn5 a,
+.btn3 a {
+  color: #32ff7e;
+}
+
+.btn5 a::before,
+.btn3 a::before {
+  border-top: 0.06rem solid #32ff7e;
+  border-left: 0.06rem solid #32ff7e;
+}
+
+.btn5 a::after,
+.btn3 a::after {
+  border-bottom: 0.06rem solid #32ff7e;
+  border-right: 0.06rem solid #32ff7e;
+}
+
+.btn5 a:hover,
+.btn3 a:hover {
+  background-color: #32ff7e;
+}
+
+.option-container,
+.option-toggle-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.option-container {
+  position: absolute;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.336);
+}
+
+.option-toggle-container {
+  position: relative;
+  height: 4rem;
+  width: 6rem;
+  background-color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.flex-music {
+  position: relative;
+  width: 100%;
+  height: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.music {
+  background: url("../icons/music.png") no-repeat center center/cover;
+  height: 0.5rem;
+  width: 0.5rem;
+  left: 0.6rem;
+  cursor: pointer;
+  position: absolute;
+}
+
+.sound {
+  background: url("../icons/volume.png") no-repeat center center/cover;
+  height: 0.5rem;
+  width: 0.5rem;
+  position: absolute;
+  left: 0.6rem;
+  cursor: pointer;
+}
+
+.setting-name {
+  font-family: "Varela Round", sans-serif;
+  position: absolute;
+  left: 1.46rem;
+  font-size: 0.55rem;
+}
+
+.toggle {
+  height: 0.5rem;
+  width: 0.8rem;
+  position: absolute;
+  cursor: pointer;
+  right: 0.6rem;
+}
+
+.first,
+.second {
+  background-color: #b1b1b1;
+  height: 0.5rem;
+  width: 0.8rem;
+  position: relative;
+  border-radius: 1.3rem;
+}
+
+.first::before,
+.second::before {
+  content: "";
+  position: absolute;
+  height: 0.33rem;
+  width: 0.33rem;
+  background-color: white;
+  border-radius: 1.3rem;
+  margin: calc(1rem / 12.5);
+}
+
+.first::before,
+.first::after {
+  left: 0;
+}
+
+.second::before,
+.second::after {
+  right: 0;
+}
+
+.first::after,
+.second::after {
+  content: "";
+  position: absolute;
+  height: 0.18rem;
+  width: 0.18rem;
+  background-color: #b1b1b1;
+  border-radius: 1rem;
+  margin: calc(1rem / 6.3);
+}
+
+.first {
+  position: absolute;
+  z-index: 2;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+}
+
+.second {
+  position: absolute;
+  z-index: 1;
+}
+
+.first.click::before {
+  -webkit-animation: rightBefore 1s forwards;
+          animation: rightBefore 1s forwards;
+}
+
+.first.click::after {
+  -webkit-animation: rightAfter 1s forwards;
+          animation: rightAfter 1s forwards;
+}
+
+.second.click::before {
+  -webkit-animation: leftBefore 1s forwards;
+          animation: leftBefore 1s forwards;
+}
+
+.second.click::after {
+  -webkit-animation: leftAfter 1s forwards;
+          animation: leftAfter 1s forwards;
+}
+
+.first.click {
+  background-color: #ff4b2b;
+  visibility: visible;
+}
+
+.second.click {
+  visibility: visible;
+}
+
+.first.re-click {
+  visibility: hidden;
+}
+
+.second.re-click {
+  visibility: hidden;
+}
+
+@-webkit-keyframes rightBefore {
+  0% {
+    left: 0;
+  }
+  30% {
+    width: 0.44rem;
+  }
+  100% {
+    width: 0.33rem;
+    left: 0.3rem;
+  }
+}
+
+@keyframes rightBefore {
+  0% {
+    left: 0;
+  }
+  30% {
+    width: 0.44rem;
+  }
+  100% {
+    width: 0.33rem;
+    left: 0.3rem;
+  }
+}
+
+@-webkit-keyframes rightAfter {
+  0% {
+    left: 0;
+  }
+  30% {
+    width: 0.25rem;
+    background-color: white;
+  }
+  100% {
+    background-color: white;
+    width: 0.18rem;
+    left: 0.3rem;
+  }
+}
+
+@keyframes rightAfter {
+  0% {
+    left: 0;
+  }
+  30% {
+    width: 0.25rem;
+    background-color: white;
+  }
+  100% {
+    background-color: white;
+    width: 0.18rem;
+    left: 0.3rem;
+  }
+}
+
+@-webkit-keyframes leftBefore {
+  0% {
+    right: 0;
+  }
+  30% {
+    width: 0.44rem;
+  }
+  100% {
+    width: 0.33rem;
+    right: 0.3rem;
+  }
+}
+
+@keyframes leftBefore {
+  0% {
+    right: 0;
+  }
+  30% {
+    width: 0.44rem;
+  }
+  100% {
+    width: 0.33rem;
+    right: 0.3rem;
+  }
+}
+
+@-webkit-keyframes leftAfter {
+  0% {
+    right: 0;
+  }
+  30% {
+    width: 0.25rem;
+    background-color: #b1b1b1;
+  }
+  100% {
+    background-color: #b1b1b1;
+    width: 0.18rem;
+    right: 0.3rem;
+  }
+}
+
+@keyframes leftAfter {
+  0% {
+    right: 0;
+  }
+  30% {
+    width: 0.25rem;
+    background-color: #b1b1b1;
+  }
+  100% {
+    background-color: #b1b1b1;
+    width: 0.18rem;
+    right: 0.3rem;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  height: .7rem;
+  width: .7rem;
+  top: 0.2rem;
+  right: 0.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.close-btn::after, .close-btn::before {
+  content: '';
+  position: absolute;
+  height: 0.5rem;
+  width: 0.06rem;
+  border-radius: 25%;
+  background-color: black;
+}
+
+.close-btn-container {
+  height: 0.09rem;
+}
+
+.close-btn::after {
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+
+.close-btn::before {
+  -webkit-transform: rotateZ(-45deg);
+          transform: rotateZ(-45deg);
+}
+
+.option-container {
+  height: 0;
+  width: 0;
+}
+
+.option-toggle-container {
+  height: 0;
+  width: 0;
 }
