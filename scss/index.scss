@@ -1,7 +1,7 @@
 $btn1_color: #32ff7e;
 $btn2_color: #18dcff;
-$btn4_color: #ff3f34;
-$body_color: rgb(255, 80, 80);
+$btn4_color: #32ff7e;
+$body_color: #ff5050;
 
 .card {
     width: 15rem;
@@ -284,6 +284,7 @@ $body_color: rgb(255, 80, 80);
 .btn5 a::after {
     right: 0;
     bottom: 0;
+    cursor: pointer;
 }
 
 .btn3 a:hover::before,
@@ -592,21 +593,13 @@ $body_color: rgb(255, 80, 80);
 }
 
 .flex-music,
-.close-btn-container,
-#first,
-#second,
-#forth,
-#fifth {
+.close-btn-container {
     visibility: hidden;
     transition: visibility 0s;
 }
 
 .flex-music.visible,
-.close-btn-container.visible,
-#first.fi,
-#second.se,
-#forth.fo,
-#fifth.fi {
+.close-btn-container.visible {
     transition-delay: 0.2s;
     visibility: visible;
 }

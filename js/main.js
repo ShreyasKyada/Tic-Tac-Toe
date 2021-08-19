@@ -3,7 +3,7 @@ const mainContainer = document.getElementsByClassName('option-toggle-container')
 const closeBtn = document.getElementsByClassName('close-btn-container')[0];
 const flexMusic = document.getElementsByClassName('flex-music')[0];
 const flexMusic1 = document.getElementsByClassName('flex-music')[1];
-const exitBtn = document.getElementById('exit');
+const toggleContainer = document.getElementsByClassName('toggle-container');
 const first = document.getElementById('first');
 const second = document.getElementById('second');
 const forth = document.getElementById('forth');
@@ -13,6 +13,12 @@ let s = false;
 let f1 = false;
 let s1 = false;
 
+window.onload = function () {
+    for (tc of toggleContainer) {
+        tc.style.visibility = "hidden";
+    }
+}
+
 document.addEventListener('click', (event) => {
     if (event.target.closest('.option-toggle-container')) {
         if (event.target.closest('.close-btn-container')) {
@@ -21,10 +27,9 @@ document.addEventListener('click', (event) => {
                 closeBtn.classList.remove('visible');
                 flexMusic.classList.remove('visible');
                 flexMusic1.classList.remove('visible');
-                first.classList.remove('fi');
-                second.classList.remove('se');
-                forth.classList.remove('fo');
-                fifth.classList.remove('fi');
+                for (tc of toggleContainer) {
+                    tc.style.visibility = "hidden";
+                }
             }
         }
         else if (event.target.closest('#first')) {
@@ -101,10 +106,9 @@ document.addEventListener('click', (event) => {
         closeBtn.classList.add('visible');
         flexMusic.classList.add('visible');
         flexMusic1.classList.add('visible');
-        first.classList.add('fi');
-        second.classList.add('se');
-        forth.classList.add('fo');
-        fifth.classList.add('fi');
+        for (tc of toggleContainer) {
+            tc.style.visibility = "visible";
+        }
     }
     else {
         if (main.classList.contains('add')) {
@@ -112,10 +116,9 @@ document.addEventListener('click', (event) => {
             closeBtn.classList.remove('visible');
             flexMusic.classList.remove('visible');
             flexMusic1.classList.remove('visible');
-            first.classList.remove('fi');
-            second.classList.remove('se');
-            forth.classList.remove('fo');
-            fifth.classList.remove('fi');
+            for (tc of toggleContainer) {
+                tc.style.visibility = "hidden";
+            }
         }
     }
 });
@@ -145,9 +148,3 @@ else {
     fifth.classList.add('click');
     fifth.classList.remove('re-click');
 }
-
-exitBtn.addEventListener('click', function() {
-    // if (window.confirm("Do you really want to exit?")) {
-        window.close();
-    // }
-});
