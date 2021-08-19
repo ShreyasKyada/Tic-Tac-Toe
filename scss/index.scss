@@ -344,30 +344,6 @@ $body_color: rgb(255, 80, 80);
     background-color: $btn1_color;
 }
 
-.option-container,
-.option-toggle-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.option-container {
-    position: absolute;
-    z-index: 100;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(255, 255, 255, 0.336);
-}
-
-.option-toggle-container {
-    position: relative;
-    height: 4rem;
-    width: 6rem;
-    background-color: white;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
 .flex-music {
     position: relative;
     width: 100%;
@@ -553,8 +529,8 @@ $body_color: rgb(255, 80, 80);
 
 .close-btn {
     position: absolute;
-    height: .7rem;
-    width: .7rem;
+    height: 0.7rem;
+    width: 0.7rem;
     top: 0.2rem;
     right: 0.2rem;
     display: flex;
@@ -563,8 +539,9 @@ $body_color: rgb(255, 80, 80);
     cursor: pointer;
 }
 
-.close-btn::after, .close-btn::before {
-    content: '';
+.close-btn::after,
+.close-btn::before {
+    content: "";
     position: absolute;
     height: 0.5rem;
     width: 0.06rem;
@@ -584,12 +561,52 @@ $body_color: rgb(255, 80, 80);
     transform: rotateZ(-45deg);
 }
 
+.option-container,
+.option-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .option-container {
+    position: absolute;
+    z-index: 100;
     height: 0;
     width: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: all 0.7s;
 }
 
 .option-toggle-container {
-    height: 0;
-    width: 0;
+    position: relative;
+    height: 4rem;
+    width: 6rem;
+    background-color: white;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.option-container.add {
+    width: 100vw;
+    height: 100vh;
+}
+
+.flex-music,
+.close-btn-container,
+#first,
+#second,
+#forth,
+#fifth {
+    visibility: hidden;
+    transition: visibility 0s;
+}
+
+.flex-music.visible,
+.close-btn-container.visible,
+#first.fi,
+#second.se,
+#forth.fo,
+#fifth.fi {
+    transition-delay: 0.2s;
+    visibility: visible;
 }
