@@ -5,8 +5,6 @@
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
     color: white;
 }
 
@@ -22,11 +20,11 @@ body {
 }
 
 .main-container {
+    background: radial-gradient(ellipse at bottom, #232425 0%, #090A0F 100%);
+    overflow: hidden;
+    position: absolute;
     height: 100%;
     width: 100%;
-    background: radial-gradient(ellipse at bottom, #232425 0%, #090A0F 100%);
-    position: relative;
-    overflow: hidden;
 }
 
 .card {
