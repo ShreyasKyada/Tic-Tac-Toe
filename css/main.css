@@ -38,4 +38,5 @@
 .card {
   height: 95vh;
   width: 9rem;
+  background-color: rgba(0, 0, 0, 0.4);
 }
