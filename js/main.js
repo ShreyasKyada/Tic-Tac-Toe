@@ -137,3 +137,10 @@ else {
     fifth.classList.add('click');
     fifth.classList.remove('re-click');
 }
+
+let backBtn = document.getElementById('back');
+
+
+backBtn.addEventListener('click',()=> {
+    window.history.back();
+});

@@ -6,14 +6,19 @@
 
 @media screen and (max-width : 500px) {
     :root {
-        font-size: 39px;
+        font-size: 45px;
+    }
+    .grid-container {
+        margin-top: .5rem;
+        height: 50%;
+        margin-bottom: .5rem;
     }
     .option-btn-container {
         flex-direction: column;
-        height: 40%;
+        height: 100%;
     }
     .player-btn-container {
-        height: 40%;
+        height: 150%;
         margin: 0;
     }
 }

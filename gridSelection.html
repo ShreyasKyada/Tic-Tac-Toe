@@ -11,11 +11,119 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/gridSelection.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <title>TIC TAC TOE</title>
 </head>
 
 <body>
-
+    <section class="main-container">
+        <span class="s1"></span>
+        <span class="s2"></span>
+        <span class="s3"></span>
+        <span class="s4"></span>
+        <section class="main-container">
+            <span class="s1"></span>
+            <span class="s2"></span>
+            <span class="s3"></span>
+            <span class="s4"></span>
+            <section class="option-container">
+                <div class="option-toggle-container">
+                    <div class="close-btn-container">
+                        <div class="close-btn"></div>
+                    </div>
+                    <div class="flex-music-container">
+                        <div class="flex-music">
+                            <div class="music"></div>
+                            <p class="setting-name">Music</p>
+                            <div class="toggle">
+                                <div class="toggle-container first" id="first"></div>
+                                <div class="toggle-container second" id="second"></div>
+                            </div>
+                        </div>
+                        <div class="flex-music">
+                            <div class="sound"></div>
+                            <p class="setting-name">Sound</p>
+                            <div class="toggle">
+                                <div class="toggle-container first forth" id="forth"></div>
+                                <div class="toggle-container second fifth" id="fifth"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <section class="card">
+            <div class="grid-container">
+                <div class="grid-selection">
+                    <p class="grid-text">Map Dimension (Grid)</p>
+                    <div class="dropdown">
+                        <div class="dropdown-list first-list">
+                            <p class="select-text first-text">3x3</p>
+                            <div class="icon"></div>
+                        </div>
+                        <div class="select hide first-select">
+                            <div class="select-items first-grid-items">3x3</div>
+                            <div class="select-items first-grid-items">4x4</div>
+                            <div class="select-items first-grid-items">5x5</div>
+                            <div class="select-items first-grid-items">6x6</div>
+                            <div class="select-items first-grid-items">7x7</div>
+                            <div class="select-items first-grid-items">8x8</div>
+                            <div class="select-items first-grid-items">9x9</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-selection">
+                    <p class="grid-text">Number of symbols</p>
+                    <div class="dropdown">
+                        <div class="dropdown-list second-list">
+                            <p class="select-text second-text">3</p>
+                            <div class="icon"></div>
+                        </div>
+                        <div class="select hide second-select">
+                            <div class="select-items second-grid-items">3</div>
+                            <div class="select-items second-grid-items">4</div>
+                            <div class="select-items second-grid-items">5</div>
+                            <div class="select-items second-grid-items">6</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-selection player1-textbox">
+                    <label for="player1" class="player1">Player 1:</label>
+                    <input type="text" class="player1" maxlength="15" name="player1">
+                </div>
+                <div class="grid-selection player2-textbox">
+                    <label for="player2" class="player2">Player 2:</label>
+                    <input type="text" class="player2" maxlength="15" name="player2">
+                </div>
+            </div>
+            <section class="btn-container">
+                <section class="option-btn-container">
+                    <div class="small-btn btn4">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <a id="back">Back</a>
+                    </div>
+                    <div class="small-btn btn3">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <a href="play.html" id="single-player">Play</a>
+                    </div>
+                    <div class="small-btn btn5">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <a id="option">Options</a>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </section>
+    <script src="js/main.js"></script>
+    <script src="js/gridSelection.js"></script>
 </body>
 
 </html>
