@@ -3,7 +3,7 @@ const mainContainer = document.getElementsByClassName('option-toggle-container')
 const closeBtn = document.getElementsByClassName('close-btn-container')[0];
 const flexMusic = document.getElementsByClassName('flex-music')[0];
 const flexMusic1 = document.getElementsByClassName('flex-music')[1];
-const toggleContainer = document.getElementsByClassName('toggle-container');
+const flexMusicContainer = document.getElementsByClassName('flex-music-container')[0];
 const first = document.getElementById('first');
 const second = document.getElementById('second');
 const forth = document.getElementById('forth');
@@ -13,11 +13,6 @@ let s = false;
 let f1 = false;
 let s1 = false;
 
-window.onload = function () {
-    for (tc of toggleContainer) {
-        tc.style.visibility = "hidden";
-    }
-}
 
 document.addEventListener('click', (event) => {
     if (event.target.closest('.option-toggle-container')) {
@@ -27,9 +22,7 @@ document.addEventListener('click', (event) => {
                 closeBtn.classList.remove('visible');
                 flexMusic.classList.remove('visible');
                 flexMusic1.classList.remove('visible');
-                for (tc of toggleContainer) {
-                    tc.style.visibility = "hidden";
-                }
+                flexMusicContainer.classList.remove('show');
             }
         }
         else if (event.target.closest('#first')) {
@@ -106,9 +99,7 @@ document.addEventListener('click', (event) => {
         closeBtn.classList.add('visible');
         flexMusic.classList.add('visible');
         flexMusic1.classList.add('visible');
-        for (tc of toggleContainer) {
-            tc.style.visibility = "visible";
-        }
+        flexMusicContainer.classList.add('show');
     }
     else {
         if (main.classList.contains('add')) {
@@ -116,9 +107,7 @@ document.addEventListener('click', (event) => {
             closeBtn.classList.remove('visible');
             flexMusic.classList.remove('visible');
             flexMusic1.classList.remove('visible');
-            for (tc of toggleContainer) {
-                tc.style.visibility = "hidden";
-            }
+            flexMusicContainer.classList.remove('show');
         }
     }
 });

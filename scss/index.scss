@@ -348,10 +348,19 @@ $body_color: #ff5050;
 .flex-music {
     position: relative;
     width: 100%;
-    height: 1rem;
+    height: 1.5rem;
     display: flex;
     align-items: center;
     flex-direction: row;
+}
+
+.option-toggle-container {
+    position: relative;
+    height: 4.6rem;
+    width: 7rem;
+    background-color: white;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .music {
@@ -528,6 +537,15 @@ $body_color: #ff5050;
     }
 }
 
+.flex-music-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 0; // 4.4rem
+    margin-top: 1.1rem;
+    transition: height .2s;
+}
+
 .close-btn {
     position: absolute;
     height: 0.7rem;
@@ -578,15 +596,6 @@ $body_color: #ff5050;
     transition: all 0.7s;
 }
 
-.option-toggle-container {
-    position: relative;
-    height: 4rem;
-    width: 6rem;
-    background-color: white;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
 .option-container.add {
     width: 100vw;
     height: 100vh;
@@ -602,4 +611,8 @@ $body_color: #ff5050;
 .close-btn-container.visible {
     transition-delay: 0.2s;
     visibility: visible;
+}
+
+.flex-music-container.show {
+    height: 4.4rem;
 }
