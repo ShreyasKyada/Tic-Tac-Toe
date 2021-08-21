@@ -19,6 +19,7 @@
   }
   .grid-container-square {
     background-color: yellow;
+    width: 94vw;
     height: 60vh;
   }
 }

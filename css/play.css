@@ -34,7 +34,7 @@
 .option-btn-container {
   margin: 0;
   position: absolute;
-  bottom: 0rem;
+  bottom: 0.1rem;
   width: 70%;
   height: 10%;
 }
