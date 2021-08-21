@@ -164,3 +164,8 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
+
+.grid-square {
+  border: 0.016rem solid #eedc79;
+  overflow: hidden;
+}
