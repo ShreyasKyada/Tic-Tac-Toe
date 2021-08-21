@@ -34,7 +34,7 @@
 .option-btn-container {
   margin: 0;
   position: absolute;
-  bottom: 0.1rem;
+  bottom: 0rem;
   width: 70%;
   height: 10%;
 }
@@ -149,7 +149,6 @@
   top: 3.2rem;
   height: 7rem;
   width: 7rem;
-  background-color: #ff00004f;
 }
 
 .grid-container-square .grid {

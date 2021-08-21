@@ -14,17 +14,29 @@
     }
 }
 
+@media screen and(max-width: 628px) {
+    .small-btn a {
+        font-size: .3rem;
+    }
+    .option-btn-container {
+        width: 98%;
+    }
+}
+
 @media screen and(max-width: 371px) {
     :root{
         font-size: 40px;
     }
     .grid-container-square {
-        background-color: yellow;
         margin-top: .5rem;
         width: 94vw;
         height: 60vh;
+        background-color: white;
     }
     .align-symbol-container {
         top: 2.5rem;
+    }
+    .option-btn-container{
+        bottom: .1rem;
     }
 }

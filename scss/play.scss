@@ -36,7 +36,7 @@ $btn4_color: #32ff7e;
 .option-btn-container {
     margin: 0;
     position: absolute;
-    bottom: 0.1rem;
+    bottom: 0rem;
     width: 70%;
     height: 10%;
 }
@@ -137,7 +137,6 @@ $btn4_color: #32ff7e;
     top: 3.2rem;
     height: 7rem;
     width: 7rem;
-    background-color: #ff00004f;
     .grid {
         display: flex;
         align-items: center;
