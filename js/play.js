@@ -3,9 +3,13 @@ let DOMGrid = document.getElementsByClassName('grid')[0];
 let totalWidth = (gridContainer.clientWidth) - 5;
 
 // let grid = localStorage.getItem('grid');
-grid = '9x9';
-
-grid = parseInt(grid.charAt(0));
+grid = '11x11';
+if (grid.charAt(1) === '0')
+    grid = parseInt('10');
+else if (grid.charAt(1) === '1')
+    grid = parseInt('11');
+else
+    grid = parseInt(grid.charAt(0));
 
 let gridMatrix = new Array(grid);
 for (let i = 0; i < grid; i++) {
@@ -23,8 +27,8 @@ for (let i = 0; i < grid; i++)
 let h = totalWidth / grid;
 let fSize = h;
 
-for(let i = 0; i < grid; i++) {
-    for(let j = 0;j <grid; j++){
+for (let i = 0; i < grid; i++) {
+    for (let j = 0; j < grid; j++) {
         let span = document.createElement('i');
         span.style.width = h + 'px';
         span.style.height = h + 'px';
