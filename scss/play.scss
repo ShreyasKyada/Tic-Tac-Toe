@@ -149,3 +149,23 @@ $btn4_color: #32ff7e;
     border: 0.016rem solid rgb(238, 220, 121);
     overflow: hidden;
 }
+
+.grid-p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .5s;
+}
+
+.i1 {
+    color: white;
+    font-family: "Varela Round", sans-serif;
+    text-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff,
+        0 0 0.8rem #001aff, 0 0 1rem #001aff;
+}
+
+.i2 {
+    color:white;
+    font-family: "Varela Round", sans-serif;
+    text-shadow: 0 0 0.1rem red, 0 0 0.4rem red, 0 0 0.8rem red;
+}
