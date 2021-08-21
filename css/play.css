@@ -1,4 +1,50 @@
-.player-name-container {
+* {
+  font-family: "Varela Round", sans-serif;
+}
+
+.small-btn {
+  height: 0.9rem;
+  width: 2.6rem;
+}
+
+.small-btn a {
+  font-size: 0.4rem;
+}
+
+.btn3 a::before,
+.btn3 a::after,
+.btn4 a::before,
+.btn4 a::after,
+.btn5 a::before,
+.btn5 a::after {
+  height: 0.28rem;
+  width: 0.28rem;
+}
+
+.btn4 a::before {
+  border-top: 0.04rem solid #32ff7e;
+  border-left: 0.04rem solid #32ff7e;
+}
+
+.btn4 a::after {
+  border-bottom: 0.04rem solid #32ff7e;
+  border-right: 0.04rem solid #32ff7e;
+}
+
+.option-btn-container {
+  margin: 0;
+  position: absolute;
+  bottom: 0rem;
+  width: 70%;
+  height: 10%;
+}
+
+.player-name-container,
+.player-name,
+.p1-detail,
+.p2-detail,
+.grid-container-square,
+.align-symbol-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,7 +57,111 @@
 }
 
 .player-name-container {
-  height: 3rem;
+  height: 2.2rem;
   width: 100%;
-  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.player-name {
+  width: 10rem;
+  height: 100%;
+  font-size: 0.65rem;
+}
+
+.p1-detail,
+.p2-detail {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0rem 0.2rem;
+}
+
+.p1-symbol,
+.p2-symbol {
+  font-size: 0.75rem;
+  color: white;
+}
+
+.p1-symbol {
+  text-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.8rem #001aff, 0 0 1rem #001aff;
+}
+
+.p2-symbol {
+  text-shadow: 0 0 0.1rem red, 0 0 0.4rem red, 0 0 0.8rem red;
+}
+
+.wining {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  padding-bottom: 0.5rem;
+  color: white;
+  letter-spacing: 0.1rem;
+}
+
+.p1-name,
+.p2-name {
+  font-size: 0.45rem;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.p1-name {
+  color: #6473ff;
+}
+
+.p2-name {
+  color: #ff6262;
+}
+
+.card {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.align-symbol-container {
+  position: absolute;
+  top: 2.2rem;
+  font-size: 0.5rem;
+  color: white;
+  text-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff;
+  overflow: hidden;
+  width: 3.5rem;
+  height: .75rem;
+  background-color: black;
+  border-radius: 0.15rem;
+  padding-left: 0.06rem;
+  padding-top: .06rem;
+}
+
+.align-symbol-container .align-symbol-count {
+  letter-spacing: 0.06rem;
+}
+
+.grid-container-square {
+  position: absolute;
+  top: 3.2rem;
+  height: 7rem;
+  width: 7rem;
+  background-color: #ff00004f;
+}
+
+.grid-container-square .grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }

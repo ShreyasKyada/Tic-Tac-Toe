@@ -38,6 +38,7 @@
 .card {
   height: 95vh;
   width: 9rem;
+  position: relative;
 }
 
 .s1,
