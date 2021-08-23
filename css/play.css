@@ -163,10 +163,13 @@
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  position: relative;
 }
 
 .grid-square {
-  border: 0.016rem solid #eedc79;
+  border: 0.016rem solid #4a5bf3;
+  -webkit-box-shadow: 0px 0px 4px #4a5bf3;
+          box-shadow: 0px 0px 4px #4a5bf3;
   overflow: hidden;
 }
 
@@ -194,4 +197,25 @@
   color: white;
   font-family: "Varela Round", sans-serif;
   text-shadow: 0 0 0.1rem red, 0 0 0.4rem red, 0 0 0.8rem red;
+}
+
+.line {
+  position: absolute;
+  height: 0;
+  width: .12rem;
+  z-index: 100;
+  border-radius: .1rem;
+  background-color: white;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.line.blue {
+  -webkit-box-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.8rem #001aff, 0 0 1rem #001aff;
+          box-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.8rem #001aff, 0 0 1rem #001aff;
+}
+
+.line.red {
+  -webkit-box-shadow: 0 0 0.1rem red, 0 0 0.4rem red, 0 0 0.8rem red;
+          box-shadow: 0 0 0.1rem red, 0 0 0.4rem red, 0 0 0.8rem red;
 }
