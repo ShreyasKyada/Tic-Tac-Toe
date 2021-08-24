@@ -1,8 +1,12 @@
 let gridContainer = document.getElementsByClassName('grid-container-square')[0];
 let DOMGrid = document.getElementsByClassName('grid')[0];
 let line = document.getElementsByClassName('line')[0];
+let playerName = document.getElementsByClassName('player-name')[0];
+let detail1 = document.getElementsByClassName('p1-detail')[0];
+let detail2 = document.getElementsByClassName('p2-detail')[0];
+let switchLine = document.getElementsByClassName('switch-line')[0];
 let totalWidth = (gridContainer.clientWidth) - 5;
-let noSymbol = 4;
+let noSymbol = 3;
 
 // let grid = localStorage.getItem('grid');
 grid = '6x6';
@@ -31,10 +35,57 @@ let fSize = h;
 let symbol = 'O';
 let i, j;
 
-function positionCalculate(max1) {
-    let topLeftArray;
-    topLeftArray = [(max1[0] * h) + (h / 2 ), (max1[1] * h) + (h / 2), (noSymbol - 1) * h];
-    return topLeftArray;
+switchLine.style.left = ((detail1.clientWidth / 4.2) + detail1.offsetLeft) + "px";
+switchLine.style.top = ((detail1.clientHeight / 1.4)) + "px";
+switchLine.classList.add('left');
+
+bottomTop = (max1) => {
+    // top left height
+    let bottomTopArray = [(max1[0] * h) + (h / 3.4), (max1[1] * h) + (h / 2), (noSymbol - 0.6) * h];
+    line.style.top = bottomTopArray[0] + "px";
+    line.style.left = bottomTopArray[1] + "px";
+    line.style.height = bottomTopArray[2] + "px";
+    if (visited[x][y] === 1)
+        line.classList.add('blue');
+    else
+        line.classList.add('red');
+    line.classList.add('bottom-top');
+}
+
+rightLeft = (max1) => {
+    let bottomTopArray = [(max1[0] * h) + (h / 2.2), (max1[1] * h) + (h / 2.5), (noSymbol - 0.6) * h];
+    line.style.top = bottomTopArray[0] + "px";
+    line.style.left = bottomTopArray[1] + "px";
+    line.style.width = bottomTopArray[2] + "px";
+    if (visited[x][y] === 1)
+        line.classList.add('blue');
+    else
+        line.classList.add('red');
+    line.classList.add('right-left');
+}
+
+backwordSlashTopBottom = (max1) => {
+    let bottomTopArray = [(max1[0] * h) + (h / 2.6), (max1[1] * h) + (h / 2), noSymbol * h];
+    line.style.top = bottomTopArray[0] + "px";
+    line.style.left = bottomTopArray[1] + "px";
+    line.style.width = bottomTopArray[2] + "px";
+    if (visited[x][y] === 1)
+        line.classList.add('blue');
+    else
+        line.classList.add('red');
+    line.classList.add('backword-top-bottom');
+}
+
+forwardSlashTopBottom = (max1) => {
+    let bottomTopArray = [(max1[0] * h) + (h / 2.6), (max1[1] * h) + (h / 1.4), (noSymbol + .2) * h];
+    line.style.top = bottomTopArray[0] + "px";
+    line.style.left = bottomTopArray[1] + "px";
+    line.style.width = bottomTopArray[2] + "px";
+    if (visited[x][y] === 1)
+        line.classList.add('blue');
+    else
+        line.classList.add('red');
+    line.classList.add('forward-top-bottom');
 }
 
 function checkWin(x, y) {
@@ -59,17 +110,7 @@ function checkWin(x, y) {
     }
     max1 = [xx + 1, y];
     if (count === noSymbol) {
-        let topLeftArray = positionCalculate(max1);
-        line.style.top = topLeftArray[0] + "px";
-        line.style.left = topLeftArray[1] + "px";
-        line.style.height = topLeftArray[2] + "px";
-        if(visited[x][y] == 1){
-            line.classList.add('blue');
-        }
-        else {
-            line.classList.add('red');
-        }
-        console.log(max1 + " " + max2);
+        bottomTop(max1);
         console.log("win up");
         return;
     }
@@ -89,19 +130,8 @@ function checkWin(x, y) {
             break;
         }
     }
-    // max2 = [xx - 1, y];
     if (count === noSymbol) {
-        let topLeftArray = positionCalculate(max1);
-        line.style.top = topLeftArray[0] + "px";
-        line.style.left = topLeftArray[1] + "px";
-        line.style.height = topLeftArray[2] + "px";
-        if(visited[x][y] == 1){
-            line.classList.add('blue');
-        }
-        else {
-            line.classList.add('red');
-        }
-        // console.log(max1 + " " + max2);
+        bottomTop(max1);
         console.log("win down");
         return;
     }
@@ -110,6 +140,7 @@ function checkWin(x, y) {
     count = 1;
     xx = x;
     yy = y - 1;
+    max1 = 0;
     for (let i = 1; i < noSymbol; i++) {
         if (yy < 0) {
             break;
@@ -122,7 +153,10 @@ function checkWin(x, y) {
             break;
         }
     }
+    max1 = [x, yy + 1];
     if (count == noSymbol) {
+        rightLeft(max1);
+        console.log(max1);
         console.log("win left");
         return;
     }
@@ -143,6 +177,8 @@ function checkWin(x, y) {
         }
     }
     if (count == noSymbol) {
+        rightLeft(max1);
+        console.log(max1);
         console.log("win right");
         return;
     }
@@ -164,7 +200,9 @@ function checkWin(x, y) {
             break;
         }
     }
+    max1 = [xx + 1, yy + 1];
     if (count === noSymbol) {
+        backwordSlashTopBottom(max1);
         console.log("backword slash up win");
         return;
     }
@@ -186,6 +224,7 @@ function checkWin(x, y) {
         }
     }
     if (count === noSymbol) {
+        backwordSlashTopBottom(max1);
         console.log("backword slash down win");
         return;
     }
@@ -207,7 +246,9 @@ function checkWin(x, y) {
             break;
         }
     }
+    max1 = [xx + 1, yy - 1];
     if (count === noSymbol) {
+        forwardSlashTopBottom(max1);
         console.log("forward slash up win");
         return;
     }
@@ -229,10 +270,25 @@ function checkWin(x, y) {
         }
     }
     if (count === noSymbol) {
+        forwardSlashTopBottom(max1);
         console.log("forward slash down win");
         return;
     }
 };
+
+switchSymbol = (no) => {
+    if (no == 1) {
+        switchLine.classList.remove('left');
+        switchLine.classList.add('right');
+        switchLine.style.transform = "translateX("+ (playerName.clientWidth - (detail2.clientWidth / 0.7) + 1) + "px)";
+
+    }
+    else {
+        switchLine.classList.remove('right');
+        switchLine.classList.add('left');
+        switchLine.style.transform = "translateX(0px)";
+    }
+}
 
 alignSymbol = (x, y) => {
     if (visited[x][y] == 0) {
@@ -244,6 +300,7 @@ alignSymbol = (x, y) => {
             symbol = 'X';
             visited[x][y] = 1;
             checkWin(x, y);
+            switchSymbol(visited[x][y]);
         }
         else {
             s.firstChild.innerHTML = "X";
@@ -251,6 +308,7 @@ alignSymbol = (x, y) => {
             symbol = 'O';
             visited[x][y] = 2;
             checkWin(x, y);
+            switchSymbol(visited[x][y]);
         }
         if (s.firstChild.classList.contains('down-anim')) {
             s.firstChild.style.transform = 'translateY(' + 0 + 'px)';

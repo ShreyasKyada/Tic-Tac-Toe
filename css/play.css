@@ -65,9 +65,32 @@
 }
 
 .player-name {
-  width: 10rem;
+  width: auto;
   height: 100%;
   font-size: 0.65rem;
+  position: relative;
+}
+
+.switch-line {
+  position: absolute;
+  width: .9rem;
+  height: .1rem;
+  background-color: white;
+  border-radius: .5rem;
+  -webkit-transition: -webkit-transform 1s, -webkit-box-shadow 1s;
+  transition: -webkit-transform 1s, -webkit-box-shadow 1s;
+  transition: transform 1s, box-shadow 1s;
+  transition: transform 1s, box-shadow 1s, -webkit-transform 1s, -webkit-box-shadow 1s;
+}
+
+.switch-line.left {
+  -webkit-box-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.8rem #001aff, 0 0 1rem #001aff,  0 0 2rem #001aff, inset 0 0 .03rem #001aff;
+          box-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.8rem #001aff, 0 0 1rem #001aff,  0 0 2rem #001aff, inset 0 0 .03rem #001aff;
+}
+
+.switch-line.right {
+  -webkit-box-shadow: 0 0 0.1rem red, 0 0 0.3rem red, 0 0 0.6rem red,0 0 0.8rem red, 0 0 1rem red, 0 0 2rem red;
+          box-shadow: 0 0 0.1rem red, 0 0 0.3rem red, 0 0 0.6rem red,0 0 0.8rem red, 0 0 1rem red, 0 0 2rem red;
 }
 
 .p1-detail,
@@ -133,11 +156,11 @@
   text-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff;
   overflow: hidden;
   width: 3.5rem;
-  height: .75rem;
+  height: 0.75rem;
   background-color: black;
   border-radius: 0.15rem;
   padding-left: 0.06rem;
-  padding-top: .06rem;
+  padding-top: 0.06rem;
 }
 
 .align-symbol-container .align-symbol-count {
@@ -167,9 +190,9 @@
 }
 
 .grid-square {
-  border: 0.016rem solid #4a5bf3;
-  -webkit-box-shadow: 0px 0px 4px #4a5bf3;
-          box-shadow: 0px 0px 4px #4a5bf3;
+  border: 0.016rem solid #c8cdfc;
+  -webkit-box-shadow: 0 0 .2rem #2600ff;
+          box-shadow: 0 0 .2rem #2600ff;
   overflow: hidden;
 }
 
@@ -183,8 +206,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .i1 {
@@ -201,13 +224,11 @@
 
 .line {
   position: absolute;
-  height: 0;
-  width: .12rem;
   z-index: 100;
-  border-radius: .1rem;
+  border-radius: 0.1rem;
   background-color: white;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  height: 0;
+  width: 0;
 }
 
 .line.blue {
@@ -218,4 +239,36 @@
 .line.red {
   -webkit-box-shadow: 0 0 0.1rem red, 0 0 0.4rem red, 0 0 0.8rem red;
           box-shadow: 0 0 0.1rem red, 0 0 0.4rem red, 0 0 0.8rem red;
+}
+
+.bottom-top {
+  width: 1.5%;
+  -webkit-transition: height .5s;
+  transition: height .5s;
+}
+
+.right-left {
+  height: 1.5%;
+  -webkit-transition: width .5s;
+  transition: width .5s;
+}
+
+.backword-top-bottom {
+  height: 1.5%;
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+  -webkit-transition: width .5s;
+  transition: width .5s;
+}
+
+.forward-top-bottom {
+  height: 1.5%;
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transform: rotateZ(135deg);
+          transform: rotateZ(135deg);
+  -webkit-transition: width .5s;
+  transition: width .5s;
 }
