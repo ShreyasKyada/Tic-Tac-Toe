@@ -37,4 +37,7 @@
   .option-btn-container {
     bottom: .2rem;
   }
+  .option-toggle-container {
+    margin: 0 .15rem;
+  }
 }
