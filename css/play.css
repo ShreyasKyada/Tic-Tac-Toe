@@ -191,8 +191,8 @@
 
 .grid-square {
   border: 0.016rem solid white;
-  -webkit-box-shadow: 0 0 .06rem #4f43fd;
-          box-shadow: 0 0 .06rem #4f43fd;
+  -webkit-box-shadow: 0 0 .06rem #4437fa;
+          box-shadow: 0 0 .06rem #4437fa;
   overflow: hidden;
 }
 
