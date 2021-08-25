@@ -36,8 +36,9 @@
   }
   .option-btn-container {
     bottom: .2rem;
+    height: 12%;
   }
   .option-toggle-container {
-    margin: 0 .15rem;
+    margin: 0 0.15rem;
   }
 }
