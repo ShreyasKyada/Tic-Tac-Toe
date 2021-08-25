@@ -9,7 +9,7 @@ let totalWidth = (gridContainer.clientWidth) - 5;
 let noSymbol = 3;
 
 // let grid = localStorage.getItem('grid');
-grid = '6x6';
+grid = '9x9';
 if (grid.charAt(1) === '0')
     grid = parseInt('10');
 else if (grid.charAt(1) === '1')
