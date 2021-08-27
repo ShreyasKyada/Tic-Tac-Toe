@@ -6,8 +6,12 @@ let dropdown1 = document.getElementsByClassName('second-list')[0];
 let text1 = document.getElementsByClassName('second-text')[0];
 let list1 = document.getElementsByClassName('second-select')[0];
 let select1 = document.getElementsByClassName('second-grid-items');
+let heading = document.getElementsByClassName('heading')[0];
 
 let grid = '3x3';
+
+if (localStorage.getItem('multi') === 'multi')
+    heading.innerHTML = "Play With Computer"
 
 document.addEventListener('click', (event) => {
     if (event.target.closest('.first-list')) {
@@ -88,30 +92,8 @@ for (let option1 of select1) {
 }
 
 let play = document.getElementById('single-player');
-let player2TextBox = document.getElementsByClassName('player2-textbox')[0];
-let p1 = document.getElementsByClassName('player1')[1];
-let p2 = document.getElementsByClassName('player2')[1];
 
 play.addEventListener('click', () => {
-    let str1 = p1.value.replace(/\s+/g,' ').trim();
-    let str2 = p2.value.replace(/\s+/g,' ').trim();
-    if (str1.length > 0 && str2 > 0) {
-        localStorage.setItem('pname1',str1);
-        localStorage.setItem('pname2',str2);
-        localStorage.removeItem('single');
-        localStorage.removeItem('multi');
-    }
-    else {
-        localStorage.setItem('pname1','player 1');
-        localStorage.setItem('pname2','player 2');
-    }
-    localStorage.removeItem('single');
-    localStorage.removeItem('multi');
-    localStorage.setItem('grid',grid);
+    localStorage.setItem('grid', grid);
     localStorage.setItem('symbol', text1.textContent);
 });
-
-
-if (localStorage.getItem('single') === 'single') {
-    player2TextBox.style.display = "none";
-}

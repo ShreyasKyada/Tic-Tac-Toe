@@ -211,24 +211,24 @@ $btn4_color: #32ff7e;
 }
 
 .bottom-top {
-    width: 1.5%;
+    width: 1.2%;
     transition: height .5s;
 }
 
 .right-left {
-    height: 1.5%;
+    height: 1.2%;
     transition: width .5s;
 }
 
 .backword-top-bottom {
-    height: 1.5%;
+    height: 1.2%;
     transform-origin: left top;
     transform: rotateZ(45deg);
     transition: width .5s;
 }
 
 .forward-top-bottom {
-    height: 1.5%;
+    height: 1.2%;
     transform-origin: left top;
     transform: rotateZ(135deg);
     transition: width .5s;

@@ -5,17 +5,12 @@ let playerName = document.getElementsByClassName('player-name')[0];
 let detail1 = document.getElementsByClassName('p1-detail')[0];
 let detail2 = document.getElementsByClassName('p2-detail')[0];
 let switchLine = document.getElementsByClassName('switch-line')[0];
-let totalWidth = (gridContainer.clientWidth) - 5;
+let totalWidth = (gridContainer.clientWidth);
 let noSymbol = 3;
 
 // let grid = localStorage.getItem('grid');
-grid = '9x9';
-if (grid.charAt(1) === '0')
-    grid = parseInt('10');
-else if (grid.charAt(1) === '1')
-    grid = parseInt('11');
-else
-    grid = parseInt(grid.charAt(0));
+let grid = "9x9"
+grid = parseInt(grid.charAt(0));
 
 let gridMatrix = new Array(grid);
 for (let i = 0; i < grid; i++) {
@@ -30,7 +25,7 @@ for (let i = 0; i < grid; i++)
     for (let j = 0; j < grid; j++)
         visited[i][j] = 0;
 
-let h = totalWidth / grid;
+let h = Math.floor(totalWidth / grid);
 let fSize = h;
 let symbol = 'O';
 let i, j;
@@ -41,10 +36,12 @@ switchLine.classList.add('left');
 
 bottomTop = (max1) => {
     // top left height
-    let bottomTopArray = [(max1[0] * h) + (h / 3.4), (max1[1] * h) + (h / 2), (noSymbol - 0.6) * h];
+    let bottomTopArray = [(max1[0] * h) + (h / 3.3), (max1[1] * h) + (h / 2.1), (noSymbol - 0.6) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
+    // line.style.left = ((max1[1]*h) + (h / 2)) + "px";
     line.style.height = bottomTopArray[2] + "px";
+    line.style.transition = "height 1s"
     if (visited[x][y] === 1)
         line.classList.add('blue');
     else
@@ -91,7 +88,6 @@ forwardSlashTopBottom = (max1) => {
 function checkWin(x, y) {
     let count = 1;
     let max1;
-    let max2;
 
     //up
     let xx = x - 1;
@@ -111,8 +107,7 @@ function checkWin(x, y) {
     max1 = [xx + 1, y];
     if (count === noSymbol) {
         bottomTop(max1);
-        console.log("win up");
-        return;
+        return 1;
     }
 
     // down
@@ -132,8 +127,7 @@ function checkWin(x, y) {
     }
     if (count === noSymbol) {
         bottomTop(max1);
-        console.log("win down");
-        return;
+        return 1;
     }
 
     //left
@@ -158,7 +152,7 @@ function checkWin(x, y) {
         rightLeft(max1);
         console.log(max1);
         console.log("win left");
-        return;
+        return 1;
     }
 
     //right
@@ -178,9 +172,7 @@ function checkWin(x, y) {
     }
     if (count == noSymbol) {
         rightLeft(max1);
-        console.log(max1);
-        console.log("win right");
-        return;
+        return 1;
     }
 
     //backword slash up win \ 
@@ -203,8 +195,7 @@ function checkWin(x, y) {
     max1 = [xx + 1, yy + 1];
     if (count === noSymbol) {
         backwordSlashTopBottom(max1);
-        console.log("backword slash up win");
-        return;
+        return 1;
     }
 
     //backword slash down win \ 
@@ -225,8 +216,7 @@ function checkWin(x, y) {
     }
     if (count === noSymbol) {
         backwordSlashTopBottom(max1);
-        console.log("backword slash down win");
-        return;
+        return 1;
     }
 
     //forward slash up win /
@@ -249,8 +239,7 @@ function checkWin(x, y) {
     max1 = [xx + 1, yy - 1];
     if (count === noSymbol) {
         forwardSlashTopBottom(max1);
-        console.log("forward slash up win");
-        return;
+        return 1;
     }
 
     //forward slash down win /
@@ -271,16 +260,16 @@ function checkWin(x, y) {
     }
     if (count === noSymbol) {
         forwardSlashTopBottom(max1);
-        console.log("forward slash down win");
-        return;
+        return 1;
     }
+    return 0;
 };
 
 switchSymbol = (no) => {
     if (no == 1) {
         switchLine.classList.remove('left');
         switchLine.classList.add('right');
-        switchLine.style.transform = "translateX("+ (playerName.clientWidth - (detail2.clientWidth / 0.7) + 1) + "px)";
+        switchLine.style.transform = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.7) + 1) + "px)";
 
     }
     else {
@@ -299,22 +288,27 @@ alignSymbol = (x, y) => {
             s.firstChild.classList.add('i1');
             symbol = 'X';
             visited[x][y] = 1;
-            checkWin(x, y);
             switchSymbol(visited[x][y]);
+            if (checkWin(x, y))
+                start();
         }
         else {
             s.firstChild.innerHTML = "X";
             s.firstChild.classList.add('i2');
             symbol = 'O';
             visited[x][y] = 2;
-            checkWin(x, y);
             switchSymbol(visited[x][y]);
+            if (checkWin(x, y))
+                start();
         }
         if (s.firstChild.classList.contains('down-anim')) {
             s.firstChild.style.transform = 'translateY(' + 0 + 'px)';
         }
     }
 };
+
+DOMGrid.style.width = ((h * grid)) + "px";
+DOMGrid.style.height = ((h * grid)) + "px";
 
 let x, y;
 for (let i = 0; i < grid; i++) {
@@ -339,16 +333,18 @@ for (let i = 0; i < grid; i++) {
         DOMGrid.appendChild(gridMatrix[i][j]);
     }
 }
+// line.style.width = (gridMatrix[0][0].clientWidth / 10) + "px";
+// line.style.height = (gridMatrix[0][0].clientWidth / 10) + "px";
 
 // confetti
 const start = () => {
-    setTimeout(function() {
+    setTimeout(function () {
         confetti.start()
     }, 1000);
 };
 
 const stop = () => {
-    setTimeout(function() {
+    setTimeout(function () {
         confetti.stop()
     }, 5000);
 };

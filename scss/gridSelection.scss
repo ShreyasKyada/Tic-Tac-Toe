@@ -1,6 +1,7 @@
 .grid-container {
     margin-top: 1rem;
     height: 75%;
+    width: 100%;
     flex-direction: column;
     color: white;
 }
@@ -25,7 +26,7 @@
 }
 
 .grid-selection {
-    width: 100%;
+    width: 90%;
     height: 1.5rem;
     font-family: "Varela Round", sans-serif;
 }
@@ -112,38 +113,17 @@
 
 .grid-text {
     font-size: .4rem;
+    margin: 0 .5rem;
 }
 
-.player1-textbox,
-.player1,
-.player2-textbox,
-.player2 {
-    font-size: 0.4rem;
-}
-
-.player1-textbox,
-.player2-textbox {
-    width: 90%;
-}
-
-.player1,
-.player2 {
-    width: 4rem;
+.heading {
+    font-family: "Varela Round", sans-serif;
+    font-weight: 100;
+    color: #32ff7e;
+    border-bottom: .09rem solid #32ff7e;
+    border-radius: .1rem;
     text-align: center;
-}
-
-.player1:focus,
-.player2:focus {
-    outline: none;
-    outline-offset: none;
-}
-
-input[type="text"] {
-    background-color: transparent;
-    border: 1px solid white;
-    color: white;
-    box-shadow: 0px 0rem 0.2rem rgb(70, 70, 197);
-    padding: 0.05rem;
+    font-size: .5rem;
 }
 
 ::-webkit-scrollbar {

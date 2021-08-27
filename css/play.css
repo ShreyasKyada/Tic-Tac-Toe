@@ -242,19 +242,19 @@
 }
 
 .bottom-top {
-  width: 1.5%;
+  width: 1.2%;
   -webkit-transition: height .5s;
   transition: height .5s;
 }
 
 .right-left {
-  height: 1.5%;
+  height: 1.2%;
   -webkit-transition: width .5s;
   transition: width .5s;
 }
 
 .backword-top-bottom {
-  height: 1.5%;
+  height: 1.2%;
   -webkit-transform-origin: left top;
           transform-origin: left top;
   -webkit-transform: rotateZ(45deg);
@@ -264,7 +264,7 @@
 }
 
 .forward-top-bottom {
-  height: 1.5%;
+  height: 1.2%;
   -webkit-transform-origin: left top;
           transform-origin: left top;
   -webkit-transform: rotateZ(135deg);
