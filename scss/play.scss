@@ -233,3 +233,63 @@ $btn4_color: #32ff7e;
     transform: rotateZ(135deg);
     transition: width .5s;
 }
+
+.win-container,
+.win-btn-container,
+.win-inner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.win-btn-container {
+    width: 100%;
+    justify-content: space-around;
+}
+
+.win-container {
+    position: absolute;
+    visibility: hidden;
+    z-index: 1000;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.win-inner-container {
+    height: 7rem;
+    width: 7rem;
+    position: relative;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    padding: .2rem;
+    margin: .5rem;
+    border-radius: 3%;
+}
+
+.visible {
+    visibility: visible;
+}
+
+#win-name {
+    text-align: center;
+    font-size: 1rem;
+    position: relative;
+}
+
+#win-name::after {
+    content: '';
+    position: absolute;
+    height: .1rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    border-radius: 1rem;
+}
+
+#win-symbol {
+    font-size: 3rem;
+    font-weight: 100;
+}

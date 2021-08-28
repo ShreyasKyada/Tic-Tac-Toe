@@ -5,11 +5,17 @@ let playerName = document.getElementsByClassName('player-name')[0];
 let detail1 = document.getElementsByClassName('p1-detail')[0];
 let detail2 = document.getElementsByClassName('p2-detail')[0];
 let switchLine = document.getElementsByClassName('switch-line')[0];
+let computer = document.getElementsByClassName('p2-name')[0];
+let p1Win = document.getElementsByClassName('p1-win')[0];
+let p2Win = document.getElementsByClassName('p2-win')[0];
+let winSymbol = document.getElementById('win-symbol');
 let totalWidth = (gridContainer.clientWidth);
-let noSymbol = 3;
+let noSymbol = 3, p1WinNo = 0, p2WinNo = 0;
 
-// let grid = localStorage.getItem('grid');
-let grid = "5x9"
+if (localStorage.getItem('multi') === 'multi')
+    computer.innerHTML = "Computer";
+
+let grid = localStorage.getItem('grid');
 grid = parseInt(grid.charAt(0));
 
 let gridMatrix = new Array(grid);
@@ -46,23 +52,31 @@ bottomTop = (max1) => {
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
     line.style.height = bottomTopArray[2] + "px";
-    if (visited[x][y] === 1)
+    if (visited[x][y] === 1) {
         line.classList.add('blue');
-    else
+        p1WinNo++;
+    }
+    else {
         line.classList.add('red');
+        p2WinNo++;
+    }
     line.classList.add('bottom-top');
 }
 
 rightLeft = (max1) => {
     setLineHeightWidth();
-    let bottomTopArray = [(max1[0] * h) + (h / 2.2), (max1[1] * h) + (h / 2.5), (noSymbol - 0.6) * h];
+    let bottomTopArray = [(max1[0] * h) + (h / 2.2), (max1[1] * h) + (h / 3), (noSymbol - 0.6) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
     line.style.width = bottomTopArray[2] + "px";
-    if (visited[x][y] === 1)
+    if (visited[x][y] === 1) {
         line.classList.add('blue');
-    else
+        p1WinNo++;
+    }
+    else {
         line.classList.add('red');
+        p2WinNo++;
+    }
     line.classList.add('right-left');
 }
 
@@ -72,10 +86,14 @@ backwordSlashTopBottom = (max1) => {
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
     line.style.width = bottomTopArray[2] + "px";
-    if (visited[x][y] === 1)
+    if (visited[x][y] === 1) {
         line.classList.add('blue');
-    else
+        p1WinNo++;
+    }
+    else {
         line.classList.add('red');
+        p2WinNo++;
+    }
     line.classList.add('backword-top-bottom');
 }
 
@@ -85,10 +103,14 @@ forwardSlashTopBottom = (max1) => {
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
     line.style.width = bottomTopArray[2] + "px";
-    if (visited[x][y] === 1)
+    if (visited[x][y] === 1) {
         line.classList.add('blue');
-    else
+        p1WinNo++;
+    }
+    else {
         line.classList.add('red');
+        p2WinNo++;
+    }
     line.classList.add('forward-top-bottom');
 }
 
@@ -272,10 +294,9 @@ function checkWin(x, y) {
     return 0;
 };
 
-let translatePX = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.7) + 1) + "px)";
-if(localStorage.getItem('multi') === 'multi')
-    translatePX = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.94) + 1) + "px)"
-
+let translatePX = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.8) + 1) + "px)";
+if (localStorage.getItem('multi') === 'multi')
+    translatePX = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.94) + 1) + "px)";
 
 switchSymbol = (no) => {
     if (no == 1) {
@@ -300,8 +321,11 @@ alignSymbol = (x, y) => {
             symbol = 'X';
             visited[x][y] = 1;
             switchSymbol(visited[x][y]);
-            if (checkWin(x, y))
+            if (checkWin(x, y)) {
                 start();
+                localStorage.setItem('p1WinNo', p1WinNo);
+                localStorage.setItem('p2WinNo', p2WinNo);
+            }
         }
         else {
             s.firstChild.innerHTML = "X";
@@ -309,8 +333,11 @@ alignSymbol = (x, y) => {
             symbol = 'O';
             visited[x][y] = 2;
             switchSymbol(visited[x][y]);
-            if (checkWin(x, y))
+            if (checkWin(x, y)) {
                 start();
+                localStorage.setItem('p1WinNo', p1WinNo);
+                localStorage.setItem('p2WinNo', p2WinNo);
+            }
         }
         if (s.firstChild.classList.contains('down-anim')) {
             s.firstChild.style.transform = 'translateY(' + 0 + 'px)';
@@ -360,3 +387,8 @@ const stop = () => {
 // start();
 // stop();
 
+function reloadPage() {
+    p1Win.innerHTML = localStorage.getItem('p1Win');
+    p2Win.innerHTML = localStorage.getItem('p1Win');
+    location.reload();
+}
