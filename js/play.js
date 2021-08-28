@@ -9,7 +9,7 @@ let totalWidth = (gridContainer.clientWidth);
 let noSymbol = 3;
 
 // let grid = localStorage.getItem('grid');
-let grid = "8x9"
+let grid = "5x9"
 grid = parseInt(grid.charAt(0));
 
 let gridMatrix = new Array(grid);
@@ -30,12 +30,19 @@ let fSize = h;
 let symbol = 'O';
 let i, j;
 
-switchLine.style.left = ((detail1.clientWidth / 4) + detail1.offsetLeft) + "px";
+switchLine.style.left = ((detail1.clientWidth / 4.5) + detail1.offsetLeft) + "px";
 switchLine.style.top = ((detail1.clientHeight / 1.4)) + "px";
 switchLine.classList.add('left');
 
+
+setLineHeightWidth = () => {
+    line.style.width = (gridMatrix[0][0].clientWidth / 10) + "px";
+    line.style.height = (gridMatrix[0][0].clientWidth / 10) + "px";
+}
+
 bottomTop = (max1) => {
-    let bottomTopArray = [(max1[0] * h) + (h / 3.3), ((max1[1] * h) + (h / 2) - (line.clientWidth / 2)), (noSymbol - 0.6) * h];
+    setLineHeightWidth();
+    let bottomTopArray = [(max1[0] * h) + (h / 3.3), ((max1[1] * h) + (h / 2) - (line.clientWidth / 2.2)), (noSymbol - 0.6) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
     line.style.height = bottomTopArray[2] + "px";
@@ -47,6 +54,7 @@ bottomTop = (max1) => {
 }
 
 rightLeft = (max1) => {
+    setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 2.2), (max1[1] * h) + (h / 2.5), (noSymbol - 0.6) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
@@ -59,6 +67,7 @@ rightLeft = (max1) => {
 }
 
 backwordSlashTopBottom = (max1) => {
+    setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 2.6), (max1[1] * h) + (h / 2), noSymbol * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
@@ -71,6 +80,7 @@ backwordSlashTopBottom = (max1) => {
 }
 
 forwardSlashTopBottom = (max1) => {
+    setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 2.6), (max1[1] * h) + (h / 1.4), (noSymbol + .2) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
@@ -262,12 +272,16 @@ function checkWin(x, y) {
     return 0;
 };
 
+let translatePX = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.7) + 1) + "px)";
+if(localStorage.getItem('multi') === 'multi')
+    translatePX = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.94) + 1) + "px)"
+
+
 switchSymbol = (no) => {
     if (no == 1) {
         switchLine.classList.remove('left');
         switchLine.classList.add('right');
-        switchLine.style.transform = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.7) + 1) + "px)";
-
+        switchLine.style.transform = translatePX;
     }
     else {
         switchLine.classList.remove('right');
@@ -330,9 +344,6 @@ for (let i = 0; i < grid; i++) {
         DOMGrid.appendChild(gridMatrix[i][j]);
     }
 }
-
-line.style.width = (gridMatrix[0][0].clientWidth / 10) + "px";
-line.style.height = (gridMatrix[0][0].clientWidth / 10) + "px";
 
 // confetti
 const start = () => {
