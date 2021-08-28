@@ -9,7 +9,7 @@ let totalWidth = (gridContainer.clientWidth);
 let noSymbol = 3;
 
 // let grid = localStorage.getItem('grid');
-let grid = "9x9"
+let grid = "8x9"
 grid = parseInt(grid.charAt(0));
 
 let gridMatrix = new Array(grid);
@@ -30,18 +30,15 @@ let fSize = h;
 let symbol = 'O';
 let i, j;
 
-switchLine.style.left = ((detail1.clientWidth / 4.2) + detail1.offsetLeft) + "px";
+switchLine.style.left = ((detail1.clientWidth / 4) + detail1.offsetLeft) + "px";
 switchLine.style.top = ((detail1.clientHeight / 1.4)) + "px";
 switchLine.classList.add('left');
 
 bottomTop = (max1) => {
-    // top left height
-    let bottomTopArray = [(max1[0] * h) + (h / 3.3), (max1[1] * h) + (h / 2.1), (noSymbol - 0.6) * h];
+    let bottomTopArray = [(max1[0] * h) + (h / 3.3), ((max1[1] * h) + (h / 2) - (line.clientWidth / 2)), (noSymbol - 0.6) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
-    // line.style.left = ((max1[1]*h) + (h / 2)) + "px";
     line.style.height = bottomTopArray[2] + "px";
-    line.style.transition = "height 1s"
     if (visited[x][y] === 1)
         line.classList.add('blue');
     else
@@ -333,8 +330,9 @@ for (let i = 0; i < grid; i++) {
         DOMGrid.appendChild(gridMatrix[i][j]);
     }
 }
-// line.style.width = (gridMatrix[0][0].clientWidth / 10) + "px";
-// line.style.height = (gridMatrix[0][0].clientWidth / 10) + "px";
+
+line.style.width = (gridMatrix[0][0].clientWidth / 10) + "px";
+line.style.height = (gridMatrix[0][0].clientWidth / 10) + "px";
 
 // confetti
 const start = () => {
