@@ -345,8 +345,15 @@ alignSymbol = (x, y) => {
     }
 };
 
-DOMGrid.style.width = ((h * grid)) + "px";
-DOMGrid.style.height = ((h * grid)) + "px";
+
+if(h* grid < totalWidth){
+    DOMGrid.style.width = ((h * grid)) + "px";
+    DOMGrid.style.height = ((h * grid)) + "px";
+}
+else {
+    DOMGrid.style.width = ((h * grid) - 1) + "px";
+    DOMGrid.style.height = ((h * grid) - 1) + "px";
+}
 
 let x, y;
 for (let i = 0; i < grid; i++) {
