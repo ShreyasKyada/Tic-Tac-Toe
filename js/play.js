@@ -47,7 +47,7 @@ setLineHeightWidth = () => {
 }
 
 bottomTop = (max1) => {
-    setLineHeightWidth();
+    // setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 3.3), ((max1[1] * h) + (h / 2) - (line.clientWidth / 2.2)), (noSymbol - 0.6) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
@@ -64,7 +64,7 @@ bottomTop = (max1) => {
 }
 
 rightLeft = (max1) => {
-    setLineHeightWidth();
+    // setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 2.2), (max1[1] * h) + (h / 3), (noSymbol - 0.6) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
@@ -81,7 +81,7 @@ rightLeft = (max1) => {
 }
 
 backwordSlashTopBottom = (max1) => {
-    setLineHeightWidth();
+    // setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 2.6), (max1[1] * h) + (h / 2), noSymbol * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
@@ -98,7 +98,7 @@ backwordSlashTopBottom = (max1) => {
 }
 
 forwardSlashTopBottom = (max1) => {
-    setLineHeightWidth();
+    // setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 2.6), (max1[1] * h) + (h / 1.4), (noSymbol + .2) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";

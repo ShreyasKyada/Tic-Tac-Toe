@@ -20,7 +20,8 @@ $body_color: #ff5050;
 }
 
 .main-container {
-    background: radial-gradient(ellipse at bottom, #232425 0%, #090A0F 100%);
+    background-color: red;
+    // background: radial-gradient(ellipse at bottom, #232425 0%, #090A0F 100%);
     overflow: hidden;
     position: absolute;
     height: 100%;
