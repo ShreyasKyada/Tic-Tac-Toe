@@ -133,22 +133,24 @@ $btn4_color: #32ff7e;
     flex-direction: column;
 }
 
-.align-symbol-container {
+.align-symbol-count {
     position: absolute;
-    top: 2.2rem;
-    font-size: 0.5rem;
+    top: 2.3rem;
+    text-align: center;
+    font-size: 0.4rem;
     color: white;
-    text-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff;
     overflow: hidden;
-    width: 3.5rem;
-    height: 0.75rem;
     background-color: rgba(255, 255, 255, 0);
     border-radius: 0.15rem;
     padding-left: 0.06rem;
     padding-top: 0.06rem;
-    .align-symbol-count {
-        letter-spacing: 0.06rem;
-    }
+}
+
+.heading {
+    font-weight: 100;
+    color: #32ff7e;
+    border-bottom: .07rem solid #32ff7e;
+    border-radius: .1rem;
 }
 
 .grid-container-square {
@@ -161,6 +163,7 @@ $btn4_color: #32ff7e;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+        flex-shrink: 0;
         position: relative;
     }
 }
@@ -170,6 +173,7 @@ $btn4_color: #32ff7e;
     border: 0.016rem solid white;
     box-shadow: 0 0 .06rem #4437fa;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .grid-p {
@@ -257,17 +261,15 @@ $btn4_color: #32ff7e;
 
 .win-inner-container {
     height: 7rem;
-    min-width: 3rem;
+    width: 8rem;
     position: relative;
     flex-direction: column;
     background-color: black;
     color: white;
-    // min-width: 200px;
+    flex-shrink: 1;
+    margin: 0 0.15rem;
     visibility: visible;
 }
-
-// .visible {
-// }
 
 #win-name {
     text-align: center;

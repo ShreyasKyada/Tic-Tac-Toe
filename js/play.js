@@ -9,7 +9,7 @@ let computer = document.getElementsByClassName('p2-name')[0];
 let p1Win = document.getElementsByClassName('p1-win')[0];
 let p2Win = document.getElementsByClassName('p2-win')[0];
 let winSymbol = document.getElementById('win-symbol');
-let totalWidth = (gridContainer.clientWidth);
+let totalWidth = gridContainer.clientWidth;
 let noSymbol = 3, p1WinNo = 0, p2WinNo = 0;
 
 if (localStorage.getItem('multi') === 'multi')
@@ -31,7 +31,7 @@ for (let i = 0; i < grid; i++)
     for (let j = 0; j < grid; j++)
         visited[i][j] = 0;
 
-let h = Math.floor(totalWidth / grid);
+let h = totalWidth / grid;
 let fSize = h;
 let symbol = 'O';
 let i, j;
@@ -47,7 +47,7 @@ setLineHeightWidth = () => {
 }
 
 bottomTop = (max1) => {
-    // setLineHeightWidth();
+    setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 3.3), ((max1[1] * h) + (h / 2) - (line.clientWidth / 2.2)), (noSymbol - 0.6) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
@@ -64,7 +64,7 @@ bottomTop = (max1) => {
 }
 
 rightLeft = (max1) => {
-    // setLineHeightWidth();
+    setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 2.2), (max1[1] * h) + (h / 3), (noSymbol - 0.6) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
@@ -81,7 +81,7 @@ rightLeft = (max1) => {
 }
 
 backwordSlashTopBottom = (max1) => {
-    // setLineHeightWidth();
+    setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 2.6), (max1[1] * h) + (h / 2), noSymbol * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
@@ -98,7 +98,7 @@ backwordSlashTopBottom = (max1) => {
 }
 
 forwardSlashTopBottom = (max1) => {
-    // setLineHeightWidth();
+    setLineHeightWidth();
     let bottomTopArray = [(max1[0] * h) + (h / 2.6), (max1[1] * h) + (h / 1.4), (noSymbol + .2) * h];
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
@@ -345,15 +345,8 @@ alignSymbol = (x, y) => {
     }
 };
 
-
-if(h* grid < totalWidth){
-    DOMGrid.style.width = ((h * grid)) + "px";
-    DOMGrid.style.height = ((h * grid)) + "px";
-}
-else {
-    DOMGrid.style.width = ((h * grid) - 1) + "px";
-    DOMGrid.style.height = ((h * grid) - 1) + "px";
-}
+DOMGrid.style.width = (h * grid) + "px";
+DOMGrid.style.height = (h * grid) + "px";
 
 let x, y;
 for (let i = 0; i < grid; i++) {
