@@ -8,7 +8,12 @@ let switchLine = document.getElementsByClassName('switch-line')[0];
 let computer = document.getElementsByClassName('p2-name')[0];
 let p1Win = document.getElementsByClassName('p1-win')[0];
 let p2Win = document.getElementsByClassName('p2-win')[0];
+let winContainer = document.getElementsByClassName('win-container')[0];
+let winInnerContainer = document.getElementsByClassName('win-inner-container')[0];
+let winName = document.getElementById('win-name');
 let winSymbol = document.getElementById('win-symbol');
+let winBtn1 = document.getElementById('win-btn-1');
+let winBtn2 = document.getElementById('win-btn-2');
 let totalWidth = gridContainer.clientWidth;
 let noSymbol = 3, p1WinNo = 0, p2WinNo = 0;
 
@@ -325,6 +330,15 @@ alignSymbol = (x, y) => {
                 start();
                 localStorage.setItem('p1WinNo', p1WinNo);
                 localStorage.setItem('p2WinNo', p2WinNo);
+                setTimeout(() => {
+                    winContainer.classList.add('expand');
+                    winInnerContainer.classList.add('expand');
+                    winSymbol.innerHTML = 'O';
+                    winName.classList.add('blue');
+                    winSymbol.classList.add('blue');
+                    winBtn1.classList.add('btn-blue');
+                    winBtn2.classList.add('btn-blue');
+                }, 500);
             }
         }
         else {
@@ -337,6 +351,15 @@ alignSymbol = (x, y) => {
                 start();
                 localStorage.setItem('p1WinNo', p1WinNo);
                 localStorage.setItem('p2WinNo', p2WinNo);
+                setTimeout(() => {
+                    winContainer.classList.add('expand');
+                    winInnerContainer.classList.add('expand');
+                    winSymbol.innerHTML = 'X';
+                    winName.classList.add('red');
+                    winSymbol.classList.add('red');
+                    winBtn1.classList.add('btn-red');
+                    winBtn2.classList.add('btn-red');
+                }, 500);
             }
         }
         if (s.firstChild.classList.contains('down-anim')) {

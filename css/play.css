@@ -73,10 +73,10 @@
 
 .switch-line {
   position: absolute;
-  width: .9rem;
-  height: .1rem;
+  width: 0.9rem;
+  height: 0.1rem;
   background-color: white;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   -webkit-transition: -webkit-transform 1s, -webkit-box-shadow 1s;
   transition: -webkit-transform 1s, -webkit-box-shadow 1s;
   transition: transform 1s, box-shadow 1s;
@@ -84,13 +84,13 @@
 }
 
 .switch-line.left {
-  -webkit-box-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.8rem #001aff, 0 0 1rem #001aff,  0 0 2rem #001aff, inset 0 0 .03rem #001aff;
-          box-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.8rem #001aff, 0 0 1rem #001aff,  0 0 2rem #001aff, inset 0 0 .03rem #001aff;
+  -webkit-box-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.8rem #001aff, 0 0 1rem #001aff, 0 0 2rem #001aff, inset 0 0 0.03rem #001aff;
+          box-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.8rem #001aff, 0 0 1rem #001aff, 0 0 2rem #001aff, inset 0 0 0.03rem #001aff;
 }
 
 .switch-line.right {
-  -webkit-box-shadow: 0 0 0.1rem red, 0 0 0.3rem red, 0 0 0.6rem red,0 0 0.8rem red, 0 0 1rem red, 0 0 2rem red;
-          box-shadow: 0 0 0.1rem red, 0 0 0.3rem red, 0 0 0.6rem red,0 0 0.8rem red, 0 0 1rem red, 0 0 2rem red;
+  -webkit-box-shadow: 0 0 0.1rem red, 0 0 0.3rem red, 0 0 0.6rem red, 0 0 0.8rem red, 0 0 1rem red, 0 0 2rem red;
+          box-shadow: 0 0 0.1rem red, 0 0 0.3rem red, 0 0 0.6rem red, 0 0 0.8rem red, 0 0 1rem red, 0 0 2rem red;
 }
 
 .p1-detail,
@@ -164,8 +164,8 @@
 .heading {
   font-weight: 100;
   color: #32ff7e;
-  border-bottom: .07rem solid #32ff7e;
-  border-radius: .1rem;
+  border-bottom: 0.07rem solid #32ff7e;
+  border-radius: 0.1rem;
 }
 
 .grid-container-square {
@@ -194,8 +194,8 @@
 
 .grid-square {
   border: 0.016rem solid white;
-  -webkit-box-shadow: 0 0 .06rem #4437fa;
-          box-shadow: 0 0 .06rem #4437fa;
+  -webkit-box-shadow: 0 0 0.06rem #4437fa;
+          box-shadow: 0 0 0.06rem #4437fa;
   overflow: hidden;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -248,14 +248,14 @@
 
 .bottom-top {
   width: 1.2%;
-  -webkit-transition: height .5s;
-  transition: height .5s;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
 }
 
 .right-left {
   height: 1.2%;
-  -webkit-transition: width .5s;
-  transition: width .5s;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 
 .backword-top-bottom {
@@ -264,8 +264,8 @@
           transform-origin: left top;
   -webkit-transform: rotateZ(45deg);
           transform: rotateZ(45deg);
-  -webkit-transition: width .5s;
-  transition: width .5s;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 
 .forward-top-bottom {
@@ -274,13 +274,14 @@
           transform-origin: left top;
   -webkit-transform: rotateZ(135deg);
           transform: rotateZ(135deg);
-  -webkit-transition: width .5s;
-  transition: width .5s;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 
 .win-container,
 .win-btn-container,
-.win-inner-container {
+.win-inner-container,
+.main-win-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -301,14 +302,17 @@
 .win-container {
   position: absolute;
   z-index: 1000;
-  height: 100vh;
-  width: 100vw;
+  height: 0;
+  width: 0;
+  visibility: hidden;
   background-color: rgba(255, 255, 255, 0.25);
+  -webkit-transition: height .5s linear, width .5s linear;
+  transition: height .5s linear, width .5s linear;
 }
 
 .win-inner-container {
-  height: 7rem;
-  width: 8rem;
+  height: 0rem;
+  width: 0rem;
   position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -319,7 +323,9 @@
   -ms-flex-negative: 1;
       flex-shrink: 1;
   margin: 0 0.15rem;
-  visibility: visible;
+  visibility: hidden;
+  -webkit-transition: height .5s linear, width .5s linear;
+  transition: height .5s linear, width .5s linear;
 }
 
 #win-name {
@@ -329,17 +335,92 @@
 }
 
 #win-name::after {
-  content: '';
+  content: "";
   position: absolute;
-  height: .1rem;
+  height: 0.1rem;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: red;
   border-radius: 1rem;
 }
 
 #win-symbol {
   font-size: 3rem;
   font-weight: 100;
+}
+
+.blue {
+  text-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.8rem #001aff, 0 0 1rem #001aff;
+}
+
+.red {
+  text-shadow: 0 0 0.1rem red, 0 0 0.4rem red, 0 0 0.8rem red;
+}
+
+.blue#win-name::after {
+  background-color: white;
+  -webkit-box-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.65rem #001aff;
+          box-shadow: 0 0 0.1rem #001aff, 0 0 0.3rem #001aff, 0 0 0.6rem #001aff, 0 0 0.65rem #001aff;
+}
+
+.red#win-name::after {
+  background-color: white;
+  -webkit-box-shadow: 0 0 0.1rem red, 0 0 0.4rem red, 0 0 0.8rem red, 0 0 0.9rem red;
+          box-shadow: 0 0 0.1rem red, 0 0 0.4rem red, 0 0 0.8rem red, 0 0 0.9rem red;
+}
+
+.btn-red a {
+  color: #fc3b3b;
+}
+
+.btn-red a::after {
+  border-bottom: 0.06rem solid #fc3b3b;
+  border-right: 0.06rem solid #fc3b3b;
+}
+
+.btn-red a::before {
+  border-top: 0.06rem solid #fc3b3b;
+  border-left: 0.06rem solid #fc3b3b;
+}
+
+.btn-red a:hover {
+  background-color: #fc3b3b;
+}
+
+.btn-blue a {
+  color: #3d4ff0;
+}
+
+.btn-blue a::after {
+  border-bottom: 0.06rem solid #3d4ff0;
+  border-right: 0.06rem solid #3d4ff0;
+}
+
+.btn-blue a::before {
+  border-top: 0.06rem solid #3d4ff0;
+  border-left: 0.06rem solid #3d4ff0;
+}
+
+.btn-blue a:hover {
+  color: white;
+  background-color: #3d4ff0;
+}
+
+.main-win-container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  visibility: hidden;
+}
+
+.win-container.expand {
+  height: 100vh;
+  width: 100vw;
+  visibility: visible;
+}
+
+.win-inner-container.expand {
+  height: 7rem;
+  width: 7.5rem;
+  visibility: visible;
 }
