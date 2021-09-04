@@ -14,8 +14,16 @@ let winName = document.getElementById('win-name');
 let winSymbol = document.getElementById('win-symbol');
 let winBtn1 = document.getElementById('win-btn-1');
 let winBtn2 = document.getElementById('win-btn-2');
+let restartBtn = document.getElementById('restart');
+let restartWinBtn = document.getElementsByClassName('restart-win')[0];
+let alignSymbolNo = document.getElementsByClassName('align-symbol-count')[0];
 let totalWidth = gridContainer.clientWidth;
-let noSymbol = 3, p1WinNo = 0, p2WinNo = 0;
+let noSymbol = parseInt(localStorage.getItem('symbol')), p1WinNo = localStorage.getItem('p1WinNo'), p2WinNo = localStorage.getItem('p2WinNo');
+alignSymbolNo.innerHTML = 'aligned symbol : ' + localStorage.getItem('symbol');
+window.onload = () => {
+    p1Win.innerHTML = p1WinNo;
+    p2Win.innerHTML = p2WinNo;
+}
 
 if (localStorage.getItem('multi') === 'multi')
     computer.innerHTML = "Computer";
@@ -333,6 +341,7 @@ alignSymbol = (x, y) => {
                 setTimeout(() => {
                     winContainer.classList.add('expand');
                     winInnerContainer.classList.add('expand');
+                    winInnerContainer.classList.add('blue-line');
                     winSymbol.innerHTML = 'O';
                     winName.classList.add('blue');
                     winSymbol.classList.add('blue');
@@ -354,6 +363,7 @@ alignSymbol = (x, y) => {
                 setTimeout(() => {
                     winContainer.classList.add('expand');
                     winInnerContainer.classList.add('expand');
+                    winInnerContainer.classList.add('red-line');
                     winSymbol.innerHTML = 'X';
                     winName.classList.add('red');
                     winSymbol.classList.add('red');
@@ -415,3 +425,11 @@ function reloadPage() {
     p2Win.innerHTML = localStorage.getItem('p1Win');
     location.reload();
 }
+
+restartBtn.addEventListener('click', () => {
+    window.reloadPage();
+});
+
+restartWinBtn.addEventListener('click', () => {
+    window.reloadPage();
+});

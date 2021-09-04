@@ -96,4 +96,6 @@ let play = document.getElementById('single-player');
 play.addEventListener('click', () => {
     localStorage.setItem('grid', grid);
     localStorage.setItem('symbol', text1.textContent);
+    localStorage.setItem('p1WinNo', 0);
+    localStorage.setItem('p2WinNo', 0);
 });

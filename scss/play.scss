@@ -152,7 +152,7 @@ $btn4_color: #32ff7e;
     font-weight: 100;
     color: #32ff7e;
     border-bottom: 0.07rem solid #32ff7e;
-    border-radius: 0.1rem;
+    border-radius: 0.08rem;
 }
 
 .grid-container-square {
@@ -274,6 +274,7 @@ $btn4_color: #32ff7e;
     flex-shrink: 1;
     margin: 0 0.15rem;
     visibility: hidden;
+    border-radius: 4%;
     transition: height .5s linear, width .5s linear;
 }
 
@@ -356,6 +357,7 @@ $btn4_color: #32ff7e;
 }
 
 .main-win-container {
+    z-index: 1000;
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -372,4 +374,12 @@ $btn4_color: #32ff7e;
     height: 7rem;
     width: 7.5rem;
     visibility: visible;
+}
+
+.win-inner-container.expand.blue-line {
+    box-shadow: 0 0 .2rem #001aff, inset 0 0 .2rem #001aff;
+}
+
+.win-inner-container.expand.red-line {
+    box-shadow: 0 0 .2rem red, inset 0 0 .2rem red;
 }
