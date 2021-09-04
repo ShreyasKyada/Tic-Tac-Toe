@@ -11,7 +11,7 @@ let heading = document.getElementsByClassName('heading')[0];
 let grid = '3x3';
 
 if (localStorage.getItem('multi') === 'multi')
-    heading.innerHTML = "Play With Computer"
+    heading.innerHTML = "Play With Computer";
 
 document.addEventListener('click', (event) => {
     if (event.target.closest('.first-list')) {
