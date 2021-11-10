@@ -26,6 +26,8 @@ window.onload = () => {
 }
 
 if (localStorage.getItem('multi') === 'multi')
+    computer.innerHTML = "Player2";
+else
     computer.innerHTML = "Computer";
 
 let grid = localStorage.getItem('grid');
@@ -126,6 +128,78 @@ forwardSlashTopBottom = (max1) => {
     }
     line.classList.add('forward-top-bottom');
 }
+
+
+let translatePX = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.8) + 1) + "px)";
+if (localStorage.getItem('single') === 'single')
+    translatePX = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.94) + 1) + "px)";
+
+switchSymbol = (no) => {
+    if (no == 1) {
+        switchLine.classList.remove('left');
+        switchLine.classList.add('right');
+        switchLine.style.transform = translatePX;
+    }
+    else {
+        switchLine.classList.remove('right');
+        switchLine.classList.add('left');
+        switchLine.style.transform = "translateX(0px)";
+    }
+}
+
+alignSymbol = (x, y) => {
+    if (visited[x][y] == 0) {
+        let s = gridMatrix[x][y];
+        s.firstChild.classList.add('down-anim');
+        if (symbol === 'O') {
+            s.firstChild.innerHTML = "O";
+            s.firstChild.classList.add('i1');
+            symbol = 'X';
+            visited[x][y] = 1;
+            switchSymbol(visited[x][y]);
+            if (checkWin(x, y)) {
+                start();
+                localStorage.setItem('p1WinNo', p1WinNo);
+                localStorage.setItem('p2WinNo', p2WinNo);
+                setTimeout(() => {
+                    winContainer.classList.add('expand');
+                    winInnerContainer.classList.add('expand');
+                    winInnerContainer.classList.add('blue-line');
+                    winSymbol.innerHTML = 'O';
+                    winName.classList.add('blue');
+                    winSymbol.classList.add('blue');
+                    winBtn1.classList.add('btn-blue');
+                    winBtn2.classList.add('btn-blue');
+                }, 500);
+            }
+        }
+        else {
+            s.firstChild.innerHTML = "X";
+            s.firstChild.classList.add('i2');
+            symbol = 'O';
+            visited[x][y] = 2;
+            switchSymbol(visited[x][y]);
+            if (checkWin(x, y)) {
+                start();
+                localStorage.setItem('p1WinNo', p1WinNo);
+                localStorage.setItem('p2WinNo', p2WinNo);
+                setTimeout(() => {
+                    winContainer.classList.add('expand');
+                    winInnerContainer.classList.add('expand');
+                    winInnerContainer.classList.add('red-line');
+                    winSymbol.innerHTML = 'X';
+                    winName.classList.add('red');
+                    winSymbol.classList.add('red');
+                    winBtn1.classList.add('btn-red');
+                    winBtn2.classList.add('btn-red');
+                }, 500);
+            }
+        }
+        if (s.firstChild.classList.contains('down-anim')) {
+            s.firstChild.style.transform = 'translateY(' + 0 + 'px)';
+        }
+    }
+};
 
 function checkWin(x, y) {
     let count = 1;
@@ -305,78 +379,7 @@ function checkWin(x, y) {
         return 1;
     }
     return 0;
-};
-
-let translatePX = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.8) + 1) + "px)";
-if (localStorage.getItem('multi') === 'multi')
-    translatePX = "translateX(" + (playerName.clientWidth - (detail2.clientWidth / 0.94) + 1) + "px)";
-
-switchSymbol = (no) => {
-    if (no == 1) {
-        switchLine.classList.remove('left');
-        switchLine.classList.add('right');
-        switchLine.style.transform = translatePX;
-    }
-    else {
-        switchLine.classList.remove('right');
-        switchLine.classList.add('left');
-        switchLine.style.transform = "translateX(0px)";
-    }
 }
-
-alignSymbol = (x, y) => {
-    if (visited[x][y] == 0) {
-        let s = gridMatrix[x][y];
-        s.firstChild.classList.add('down-anim');
-        if (symbol === 'O') {
-            s.firstChild.innerHTML = "O";
-            s.firstChild.classList.add('i1');
-            symbol = 'X';
-            visited[x][y] = 1;
-            switchSymbol(visited[x][y]);
-            if (checkWin(x, y)) {
-                start();
-                localStorage.setItem('p1WinNo', p1WinNo);
-                localStorage.setItem('p2WinNo', p2WinNo);
-                setTimeout(() => {
-                    winContainer.classList.add('expand');
-                    winInnerContainer.classList.add('expand');
-                    winInnerContainer.classList.add('blue-line');
-                    winSymbol.innerHTML = 'O';
-                    winName.classList.add('blue');
-                    winSymbol.classList.add('blue');
-                    winBtn1.classList.add('btn-blue');
-                    winBtn2.classList.add('btn-blue');
-                }, 500);
-            }
-        }
-        else {
-            s.firstChild.innerHTML = "X";
-            s.firstChild.classList.add('i2');
-            symbol = 'O';
-            visited[x][y] = 2;
-            switchSymbol(visited[x][y]);
-            if (checkWin(x, y)) {
-                start();
-                localStorage.setItem('p1WinNo', p1WinNo);
-                localStorage.setItem('p2WinNo', p2WinNo);
-                setTimeout(() => {
-                    winContainer.classList.add('expand');
-                    winInnerContainer.classList.add('expand');
-                    winInnerContainer.classList.add('red-line');
-                    winSymbol.innerHTML = 'X';
-                    winName.classList.add('red');
-                    winSymbol.classList.add('red');
-                    winBtn1.classList.add('btn-red');
-                    winBtn2.classList.add('btn-red');
-                }, 500);
-            }
-        }
-        if (s.firstChild.classList.contains('down-anim')) {
-            s.firstChild.style.transform = 'translateY(' + 0 + 'px)';
-        }
-    }
-};
 
 DOMGrid.style.width = (h * grid) + "px";
 DOMGrid.style.height = (h * grid) + "px";
@@ -397,9 +400,11 @@ for (let i = 0; i < grid; i++) {
         span.appendChild(p);
         gridMatrix[i][j] = span;
         gridMatrix[i][j].onclick = function () {
-            x = i;
-            y = j;
-            alignSymbol(x, y);
+            if (visited[i][j] === 0) {
+                x = i;
+                y = j;
+                alignSymbol(x, y);
+            }
         }
         DOMGrid.appendChild(gridMatrix[i][j]);
     }
@@ -417,8 +422,6 @@ const stop = () => {
         confetti.stop()
     }, 5000);
 };
-// start();
-// stop();
 
 function reloadPage() {
     p1Win.innerHTML = localStorage.getItem('p1Win');
