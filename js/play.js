@@ -67,7 +67,7 @@ bottomTop = (max1) => {
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
     line.style.height = bottomTopArray[2] + "px";
-    if (visited[x][y] === 1) {
+    if (visited[max1[0]][max1[1]] === 1) {
         line.classList.add('blue');
         p1WinNo++;
     }
@@ -84,7 +84,7 @@ rightLeft = (max1) => {
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
     line.style.width = bottomTopArray[2] + "px";
-    if (visited[x][y] === 1) {
+    if (visited[max1[0]][max1[1]] === 1) {
         line.classList.add('blue');
         p1WinNo++;
     }
@@ -101,7 +101,7 @@ backwordSlashTopBottom = (max1) => {
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
     line.style.width = bottomTopArray[2] + "px";
-    if (visited[x][y] === 1) {
+    if (visited[max1[0]][max1[1]] === 1) {
         line.classList.add('blue');
         p1WinNo++;
     }
@@ -118,7 +118,7 @@ forwardSlashTopBottom = (max1) => {
     line.style.top = bottomTopArray[0] + "px";
     line.style.left = bottomTopArray[1] + "px";
     line.style.width = bottomTopArray[2] + "px";
-    if (visited[x][y] === 1) {
+    if (visited[max1[0]][max1[1]] === 1) {
         line.classList.add('blue');
         p1WinNo++;
     }
@@ -157,7 +157,7 @@ alignSymbol = (x, y) => {
             symbol = 'X';
             visited[x][y] = 1;
             switchSymbol(visited[x][y]);
-            if (checkWin(x, y)) {
+            if (checkWin(x, y, true)) {
                 start();
                 localStorage.setItem('p1WinNo', p1WinNo);
                 localStorage.setItem('p2WinNo', p2WinNo);
@@ -179,7 +179,7 @@ alignSymbol = (x, y) => {
             symbol = 'O';
             visited[x][y] = 2;
             switchSymbol(visited[x][y]);
-            if (checkWin(x, y)) {
+            if (checkWin(x, y, true)) {
                 start();
                 localStorage.setItem('p1WinNo', p1WinNo);
                 localStorage.setItem('p2WinNo', p2WinNo);
@@ -201,7 +201,25 @@ alignSymbol = (x, y) => {
     }
 };
 
-function checkWin(x, y) {
+
+function getScore(max1) {
+    if (visited[max1[0]][max1[1]] == 1)
+        return -10;
+    else if (visited[max1[0]][max1[1]] == 2)
+        return 10;
+}
+
+function isGameDraw() {
+    for (let i = 0; i < grid; i++) {
+        for (let j = 0; j < grid; j++) {
+            if (visited[i][j] == 0)
+                return true;
+        }
+    }
+    return false;
+}
+
+function checkWin(x, y, isAI) {
     let count = 1;
     let max1;
 
@@ -222,8 +240,10 @@ function checkWin(x, y) {
     }
     max1 = [xx + 1, y];
     if (count === noSymbol) {
-        bottomTop(max1);
-        return 1;
+        if (isAI)
+            bottomTop(max1);
+        // return 1;
+        return getScore(max1);
     }
 
     // down
@@ -242,8 +262,10 @@ function checkWin(x, y) {
         }
     }
     if (count === noSymbol) {
-        bottomTop(max1);
-        return 1;
+        if (isAI)
+            bottomTop(max1);
+        // return 1;
+        return getScore(max1);
     }
 
     //left
@@ -265,10 +287,10 @@ function checkWin(x, y) {
     }
     max1 = [x, yy + 1];
     if (count == noSymbol) {
-        rightLeft(max1);
-        console.log(max1);
-        console.log("win left");
-        return 1;
+        if (isAI)
+            rightLeft(max1);
+        // return 1;
+        return getScore(max1);
     }
 
     //right
@@ -287,8 +309,10 @@ function checkWin(x, y) {
         }
     }
     if (count == noSymbol) {
-        rightLeft(max1);
-        return 1;
+        if (isAI)
+            rightLeft(max1);
+        // return 1;
+        return getScore(max1);
     }
 
     //backword slash up win \ 
@@ -310,8 +334,10 @@ function checkWin(x, y) {
     }
     max1 = [xx + 1, yy + 1];
     if (count === noSymbol) {
-        backwordSlashTopBottom(max1);
-        return 1;
+        if (isAI)
+            backwordSlashTopBottom(max1);
+        // return 1;
+        return getScore(max1);
     }
 
     //backword slash down win \ 
@@ -331,8 +357,10 @@ function checkWin(x, y) {
         }
     }
     if (count === noSymbol) {
-        backwordSlashTopBottom(max1);
-        return 1;
+        if (isAI)
+            backwordSlashTopBottom(max1);
+        // return 1;
+        return getScore(max1);
     }
 
     //forward slash up win /
@@ -354,8 +382,10 @@ function checkWin(x, y) {
     }
     max1 = [xx + 1, yy - 1];
     if (count === noSymbol) {
-        forwardSlashTopBottom(max1);
-        return 1;
+        if (isAI)
+            forwardSlashTopBottom(max1);
+        // return 1;
+        return getScore(max1);
     }
 
     //forward slash down win /
@@ -375,16 +405,82 @@ function checkWin(x, y) {
         }
     }
     if (count === noSymbol) {
-        forwardSlashTopBottom(max1);
-        return 1;
+        if (isAI)
+            forwardSlashTopBottom(max1);
+        // return 1;
+        return getScore(max1);
     }
     return 0;
 }
 
+let x, y;
+// player = O    1
+// computer = X  2
+
+function minimax(visited, depth, clickLoc, isMaximizing) {
+    let isWin = checkWin(clickLoc.i, clickLoc.j, false);
+    if (isWin == 10)
+        return isWin;
+    if (isWin == -10)
+        return isWin;
+    if (isGameDraw() == false)
+        return 0;
+
+    if (isMaximizing) {
+        let bestScore = -Infinity;
+        for (let i = 0; i < grid; i++) {
+            for (let j = 0; j < grid; j++) {
+                if (visited[i][j] == 0) {
+                    visited[i][j] = 2;
+                    let clickLoc = { i, j };
+                    let score = minimax(visited, depth + 1, clickLoc, false);
+                    visited[i][j] = 0;
+                    bestScore = Math.max(score, bestScore);
+                }
+            }
+        }
+        return bestScore;
+    } else {
+        let bestScore = Infinity;
+        for (let i = 0; i < grid; i++) {
+            for (let j = 0; j < grid; j++) {
+                if (visited[i][j] == 0) {
+                    visited[i][j] = 1;
+                    let clickLoc = { i, j };
+                    let score = minimax(visited, depth + 1, clickLoc, true);
+                    visited[i][j] = 0;
+                    bestScore = Math.min(score, bestScore);
+                }
+            }
+        }
+        return bestScore;
+    }
+}
+
+function bestMove() {
+    let bestScore = -Infinity;
+    let move;
+    for (let i = 0; i < grid; i++) {
+        for (let j = 0; j < grid; j++) {
+            if (visited[i][j] == 0) {
+                visited[i][j] = 2;
+                let clickLoc = { i, j };
+                let score = minimax(visited, 0, clickLoc, false);
+                visited[i][j] = 0;
+                if (score > bestScore) {
+                    bestScore = score;
+                    move = { i, j };
+
+                }
+            }
+        }
+    }
+    return move;
+}
+
+
 DOMGrid.style.width = (h * grid) + "px";
 DOMGrid.style.height = (h * grid) + "px";
-
-let x, y;
 for (let i = 0; i < grid; i++) {
     for (let j = 0; j < grid; j++) {
         let span = document.createElement('span');
@@ -400,16 +496,23 @@ for (let i = 0; i < grid; i++) {
         span.appendChild(p);
         gridMatrix[i][j] = span;
         gridMatrix[i][j].onclick = function () {
-            if (visited[i][j] === 0) {
-                x = i;
-                y = j;
-                alignSymbol(x, y);
+            if (visited[i][j] == 0) {
+                if (localStorage.getItem('single') == 'single') {
+                    x = i;
+                    y = j;
+                    alignSymbol(x, y);
+                    let move = bestMove();
+                    alignSymbol(move.i, move.j);
+                } else {
+                    x = i;
+                    y = j;
+                    alignSymbol(x, y);
+                }
             }
         }
         DOMGrid.appendChild(gridMatrix[i][j]);
     }
 }
-
 // confetti
 const start = () => {
     setTimeout(function () {
